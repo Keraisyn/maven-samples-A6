@@ -22,12 +22,13 @@ pipeline {
         stage('test') {
           steps {
             sh 'mvn test'
+            catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE')
           }
         }
 
         stage('bisect') {
           when {
-            equals expected: "FAILURE", actual: currentBuild.result
+            equals expected: "UNSTABLE", actual: currentBuild.result
           }
           steps {
             sh '''git bisect start HEAD 98ac319c0cff47b4d39a1a7b61b4e195cfa231e5
