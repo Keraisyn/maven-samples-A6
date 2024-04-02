@@ -27,7 +27,7 @@ pipeline {
 
         stage('bisect') {
           steps {
-            sh '''git bisect HEAD 98ac319c0cff47b4d39a1a7b61b4e195cfa231e5
+            sh '''git bisect start HEAD 98ac319c0cff47b4d39a1a7b61b4e195cfa231e5
 git bisect run mvn clean test'''
           }
         }
