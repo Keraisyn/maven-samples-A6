@@ -18,6 +18,7 @@ pipeline {
     }
 
     stage('test') {
+      stages {
         stage('test') {
           steps {
             sh 'mvn test'
@@ -33,6 +34,7 @@ pipeline {
 git bisect run mvn clean test'''
           }
         }
+      }
       
     }
 
